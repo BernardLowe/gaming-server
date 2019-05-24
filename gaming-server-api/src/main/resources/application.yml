@@ -1,0 +1,23 @@
+server:
+  port: 8500
+spring:
+  application:
+    name: gaming-server-api
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
+    encoding: UTF-8
+    content-type: text/html
+dubbo:
+  application:
+    id: gaming-server-api
+    name: gaming-server-api
+  scan:
+    base-packages: com.ooqiu.gaming.server.api
+  protocol:
+    id: dubbo
+    name: dubbo
+  registry:
+    id: zookeeper
+    address: zookeeper://192.168.17.130:2181?backup=192.168.17.130:2182,192.168.17.130:2183
+
