@@ -1,0 +1,146 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!-- begin::Head -->
+<head>
+    <title>
+        LeeShop | 管理后台
+    </title>
+
+    <th:block th:include="includes/header :: header"/>
+</head>
+
+<body class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+<div class="m-portlet m-portlet--mobile">
+    <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                    内容管理
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="m-portlet__body">
+        <th:block th:if="${baseResult != null}">
+            <div class="alert alert-info alert-dismissible fade show" role="alert"
+                 th:classappend="${baseResult.status == 200 ? 'alert-info' : 'alert-danger'}">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                <span th:text="${baseResult.msg}"></span>
+            </div>
+        </th:block>
+
+        <!--begin: Search Form -->
+        <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+            <div class="row align-items-center">
+                <div class="col-xl-8 order-2 order-xl-1">
+                    <div class="form-group m-form__group row align-items-center">
+                        <div class="col-md-4">
+                            <div class="m-input-icon m-input-icon--left">
+                                <input type="text" class="form-control m-input" placeholder="搜索..." id="generalSearch">
+                                <span class="m-input-icon__icon m-input-icon__icon--left">
+                                    <span>
+                                        <i class="la la-search"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 order-1 order-xl-2 m--align-right">
+                    <a href="/content/form" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--air">
+                        <span>
+                            <i class="la la-plus"></i>
+                            <span>
+                                新增
+                            </span>
+                        </span>
+                    </a>
+                    <div class="m-separator m-separator--dashed d-xl-none"></div>
+                </div>
+            </div>
+        </div>
+        <!--end: Search Form -->
+        <!--begin: Datatable -->
+        <div class="m_datatable" id="ajax_data"></div>
+        <!--end: Datatable -->
+    </div>
+</div>
+
+<th:block th:include="includes/footer :: footer"/>
+<script src="/custom/js/table_utils.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        initTable();
+    });
+
+    function initTable() {
+        var url = '/content/page';
+        var columns = [
+            {
+                field: 'id',
+                title: '#',
+                sortable: false, // disable sort for this column
+                width: 40,
+                selector: false,
+                textAlign: 'center'
+            },
+            {
+                field: 'title',
+                title: '标题',
+                sortable: false, // disable sort for this column
+                selector: false,
+                textAlign: 'left'
+            },
+            {
+                field: 'subTitle',
+                title: '子标题',
+                sortable: false, // disable sort for this column
+                selector: false,
+                textAlign: 'left'
+            },
+            {
+                field: 'url',
+                title: '链接',
+                sortable: false, // disable sort for this column
+                selector: false,
+                textAlign: 'center',
+                template: function (row, index, datatable) {
+                    return '\
+						<a href="' + row.url + '" target="_blank">\
+							链接\
+						</a>\
+					';
+                }
+            },
+            {
+                field: 'updated',
+                title: '更新时间',
+                sortable: false, // disable sort for this column
+                selector: false,
+                textAlign: 'center'
+            },
+            {
+                field: 'Actions',
+                width: 110,
+                title: '操作',
+                sortable: false,
+                textAlign: 'center',
+                overflow: 'visible',
+                template: function (row, index, datatable) {
+                    return '\
+						<a href="/content/form?id=' + row.id + '" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="编辑">\
+							<i class="la la-edit"></i>\
+						</a>\
+						<a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-danger m-btn--icon m-btn--icon-only m-btn--pill" title="删除">\
+							<i class="la la-trash"></i>\
+						</a>\
+					';
+                }
+            }
+        ];
+
+        TableUtils.ajaxTable(url, columns);
+    }
+</script>
+</body>
+</html>
