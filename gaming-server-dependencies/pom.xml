@@ -29,6 +29,8 @@
         <module>../gaming-server-api</module>
         <module>../gaming-server-service-redis-api</module>
         <module>../gaming-server-service-redis</module>
+        <module>../gaming-server-service-search-api</module>
+        <module>../gaming-server-service-search</module>
     </modules>
 
     <properties>

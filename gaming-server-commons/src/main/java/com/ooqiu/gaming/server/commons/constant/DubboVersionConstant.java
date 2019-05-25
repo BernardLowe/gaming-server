@@ -14,4 +14,6 @@ public class DubboVersionConstant {
     public static final String DUBBO_VERSION_GAMING_SERVER_SERVICE_CHANNEL="1.0.0";
 
     public static final String DUBBO_VERSION_GAMING_SERVER_SERVICE_REDIS="1.0.0";
+
+    public static final String DUBBO_VERSION_GAMING_SERVER_SERVICE_SEARCH="1.0.0";
 }
