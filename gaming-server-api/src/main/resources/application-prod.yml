@@ -1,5 +1,5 @@
 server:
-  port: 8500
+  port: 8502
 spring:
   application:
     name: gaming-server-api
@@ -8,8 +8,6 @@ spring:
     mode: LEGACYHTML5
     encoding: UTF-8
     content-type: text/html
-  profiles:
-    active: dev
 dubbo:
   application:
     id: gaming-server-api
