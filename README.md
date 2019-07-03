@@ -25,7 +25,7 @@
 * 页面引擎：Thymeleaf
 * ORM 框架：tk.mybatis 简化 MyBatis 开发
 * 数据库连接池：Alibaba Druid
-* 数据库缓存：Redis Sentinel
+* 数据库缓存：Redis
 * 全文检索：使用基于 Lucence 的全文检索引擎 Solr 为整个系统提供搜索服务
 * 接口文档引擎：Swagger2 RESTful 风格 API 文档生成
 * 容器化引擎：使用 Docker 为容器化引擎并配合 Docker Compose 管理容器
