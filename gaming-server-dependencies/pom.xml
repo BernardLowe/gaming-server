@@ -44,7 +44,7 @@
         <spring-boot-pagehelper.version>1.2.3</spring-boot-pagehelper.version>
         <spring-boot-tk-mybatis.version>1.1.5</spring-boot-tk-mybatis.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
-        <google-guava.version>23.5-jre</google-guava.version>
+        <google-guava.version>24.1.1-jre</google-guava.version>
         <kryo-serializers.version>0.26</kryo-serializers.version>
         <kryo.version>2.24.0</kryo.version>
         <tk-mybatis.version>3.4.4</tk-mybatis.version>
